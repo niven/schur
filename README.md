@@ -1,5 +1,7 @@
 # Schur Numbers
 
+![Shur Coloring for 4,44](img/4_44.svg)
+
 ## Numberphile episode
 https://www.youtube.com/watch?v=57V8Ud7PL8k
 
@@ -9,13 +11,14 @@ A coloring of the numbers `{1, 2, ..., n}` is valid if:
 - No two numbers of the same color can sum to another number of the same color
 
 ## Known numbers
-S(1) = 2
-S(2) = 5
-S(3) = 14
-S(4) = 45
-S(5) = 161
 
-Note: This is the number for which there is NO coloring.
+- S(1) = 2
+- S(2) = 5
+- S(3) = 14
+- S(4) = 45
+- S(5) = 161
+
+Note: This is the highest number for which there is NO coloring using that number of colors.
 
 ## Notes
 
@@ -27,17 +30,16 @@ Note: This is the number for which there is NO coloring.
 
 For any solution of K colors there are K! "recolorings": the same solution just with colors swapped.
 
-Solutions for S(2):
-abba
-baab
+Solutions for `S(2)`:
+- abba
+- baab
 Which are the same.
 
-Solutions for S(3):
-abbaccaccabba
-bccbaacaabccb
-caacbbabbcaac
-cbbcaaaaacbbc
-
+Solutions for `S(3)`:
+- abbaccaccabba
+- bccbaacaabccb
+- caacbbabbcaac
+- cbbcaaaaacbbc
 
 
 # Examples
