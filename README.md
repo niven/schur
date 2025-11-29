@@ -130,3 +130,52 @@ This finds
 - `(4,44)` with a limit of 7_000_000 (<10 seconds)
 
 ## Search:: Breadth First
+
+For 44 the "hump" is at 27.
+
+```
+------ Stack size: 1 -- length: 2 ------
+------ Stack size: 4 -- length: 3 ------
+------ Stack size: 11 -- length: 4 ------
+------ Stack size: 38 -- length: 5 ------
+------ Stack size: 108 -- length: 6 ------
+------ Stack size: 362 -- length: 7 ------
+------ Stack size: 852 -- length: 8 ------
+------ Stack size: 2790 -- length: 9 ------
+------ Stack size: 5928 -- length: 10 ------
+------ Stack size: 16652 -- length: 11 ------
+------ Stack size: 37078 -- length: 12 ------
+------ Stack size: 97974 -- length: 13 ------
+------ Stack size: 190622 -- length: 14 ------
+------ Stack size: 494294 -- length: 15 ------
+------ Stack size: 817284 -- length: 16 ------
+------ Stack size: 1840298 -- length: 17 ------
+------ Stack size: 3195152 -- length: 18 ------
+------ Stack size: 6688694 -- length: 19 ------
+------ Stack size: 7665218 -- length: 20 ------
+------ Stack size: 15849060 -- length: 21 ------
+------ Stack size: 17624478 -- length: 22 ------
+------ Stack size: 28332964 -- length: 23 ------
+------ Stack size: 36048952 -- length: 24 ------
+------ Stack size: 42490328 -- length: 25 ------
+------ Stack size: 38278786 -- length: 26 ------
+------ Stack size: 46903046 -- length: 27 ------
+------ Stack size: 40796376 -- length: 28 ------
+------ Stack size: 36638476 -- length: 29 ------
+------ Stack size: 35022236 -- length: 30 ------
+------ Stack size: 26190108 -- length: 31 ------
+------ Stack size: 17892308 -- length: 32 ------
+------ Stack size: 14722608 -- length: 33 ------
+------ Stack size: 9641832 -- length: 34 ------
+------ Stack size: 6164266 -- length: 35 ------
+------ Stack size: 3968518 -- length: 36 ------
+------ Stack size: 1647230 -- length: 37 ------
+------ Stack size: 967224 -- length: 38 ------
+------ Stack size: 760702 -- length: 39 ------
+------ Stack size: 321386 -- length: 40 ------
+------ Stack size: 148968 -- length: 41 ------
+------ Stack size: 131802 -- length: 42 ------
+------ Stack size: 123076 -- length: 43 ------
+```
+
+546 results, with 4 colors that means 4*3 extra "real" results because the search only checks starting with 2 different colors.

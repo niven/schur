@@ -78,14 +78,14 @@ pub fn breadth_first(args: &Args) -> Option<Vec<ColorVec>> {
 
         let mut more: Vec<ColorVec> = Vec::with_capacity( todo.len() * args.colors as usize );
         for current in todo {
-            println!("Current item: {current:?}\n");
+            // println!("Current item: {current:?}\n");
 
             let possible_next_colors = find_next_colors(args.colors, &current);
-            println!("{} Children:", possible_next_colors.len());
+            // println!("{} Children:", possible_next_colors.len());
             for n in possible_next_colors {
                 let mut next = current.clone();
                 next.push(n);
-                println!("\t{:?}", next);
+                // println!("\t{:?}", next);
                 more.push( next );
             }
         }
