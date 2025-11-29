@@ -93,39 +93,38 @@ fn find_next_colors(colors: u8, c: &Coloring) -> Vec<u8> {
 pub fn breadth_first(args: &Args) -> Option<Vec<u8>> {
     
     // The initial coloring must have 2 different colors.
-    let mut todo: Vec<&Vec<u8>> = Vec::new();
-    let first = [0, 1].to_vec();
-    todo.push( &first );
-    let mut more: Vec<&Vec<u8>>;
+    let mut todo: Vec<Vec<u8>> = Vec::new();
+    let first = [0, 1];
+    todo.push( first.to_vec() );
 
     let mut sentinel = 0;
-    while sentinel < args.attempts && todo.len() > 0 {
+    let mut solution_length = 0;
+    while sentinel < args.attempts && solution_length < args.target && todo.len() > 0 {
+        println!("------ Stack size: {} ------", todo.len() );
 
-        more = Vec::new();
+        let mut more: Vec<Vec<u8>> = Vec::new();
         for current in todo {
-            println!("{current:?}");
+            println!("Current item: {current:?}\n");
 
             let possible_next_colors = find_next_colors(args.colors, &Coloring{ content: current.clone()});
+            println!("{} Children:", possible_next_colors.len());
             for n in possible_next_colors {
                 let mut next = current.clone();
                 next.push(n);
-                if next.len() == args.target {
-                    return Some(next);
-                }
-                println!("{:?}", next);
-                more.push( &next );
+                println!("\t{:?}", next);
+                more.push( next );
             }
-
-
         }
+        todo = more.to_vec();
 
-        todo = more;
         sentinel += 1;
+        solution_length += 1;
     }
     if todo.len() == 0 {
         println!("No more candidates in list");
+    } else if solution_length < args.target {
+        return Some(todo[0].clone());
     }
-
     
     return None;
 }

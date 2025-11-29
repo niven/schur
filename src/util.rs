@@ -1,4 +1,4 @@
-const COLOR_LETTERS: [char; 5] = ['a', 'b', 'c', 'd', 'e'];
+pub const COLOR_LETTERS: [char; 5] = ['a', 'b', 'c', 'd', 'e'];
 
 #[derive(Debug)]
 pub struct InvalidOrdering {

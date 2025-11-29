@@ -3,6 +3,8 @@ use std::process;
 
 use clap::Parser;
 
+use crate::util::COLOR_LETTERS;
+
 mod algorithm;
 mod util;
 
@@ -40,6 +42,8 @@ fn main() {
     algorithms.insert("random_ban", algorithm::random::random_with_bannings);
     algorithms.insert("random_dfs", algorithm::random::random_with_backtrack);
     algorithms.insert("search_dfs", algorithm::search::depth_first);
+    algorithms.insert("search_bfs", algorithm::search::breadth_first);
+    
 
 
     let algorithm = match algorithms.get( &args.algorithm.as_str() ) {
