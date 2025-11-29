@@ -1,3 +1,4 @@
+use std::collections::HashMap;
 use std::process;
 
 use clap::Parser;
@@ -26,6 +27,8 @@ pub struct Args {
 
 const COLOR_LETTERS: [char; 5] = ['a', 'b', 'c', 'd', 'e'];
 
+type ShurColoringAlgorithm = fn(args: &Args) -> Option<Vec<u8>>;
+
 fn main() {
     let args = Args::parse();
 
@@ -33,13 +36,18 @@ fn main() {
         panic!("Max colors is {}", COLOR_LETTERS.len());
     }
 
-    let algorithm = match args.algorithm.as_str() {
-        "random" => algorithm::random::random_assignment,
-        "random_ban" => algorithm::random::random_with_bannings,
-        "random_dfs" => algorithm::random::random_with_backtrack,
-        "search_dfs" => algorithm::search::depth_first,
-        _ => {
+    let mut algorithms = HashMap::new();
+    algorithms.insert("random", algorithm::random::random_assignment as ShurColoringAlgorithm);
+    algorithms.insert("random_ban", algorithm::random::random_with_bannings);
+    algorithms.insert("random_dfs", algorithm::random::random_with_backtrack);
+    algorithms.insert("search_dfs", algorithm::search::depth_first);
+
+
+    let algorithm = match algorithms.get( &args.algorithm.as_str() ) {
+        Some(method) => method,
+        None => {
             println!("Unsupported algorithm: {}", args.algorithm);
+            println!("Alogithms: {}", algorithms.keys().copied().collect::<Vec<_>>().join(", "));
             process::exit(1);
         }
     };
