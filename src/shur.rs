@@ -7,6 +7,7 @@ use crate::util::COLOR_LETTERS;
 
 mod algorithm;
 mod util;
+use crate::util::ColorVec;
 
 #[derive(Parser, Debug)]
 pub struct Args {
@@ -28,7 +29,7 @@ pub struct Args {
 }
 
 
-type ShurColoringAlgorithm = fn(args: &Args) -> Option<Vec<u8>>;
+type ShurColoringAlgorithm = fn(args: &Args) -> Option<Vec<ColorVec>>;
 
 fn main() {
     let args = Args::parse();
@@ -57,10 +58,11 @@ fn main() {
 
     let result = algorithm(&args);
     match result {
-        Some(solution) => {
-            println!("Result: {:?}", solution);
-            println!("Short form: {:?}", util::short(&solution));
-            match util::check_coloring(&solution) {
+        Some(solutions) => {
+            for s in solutions {
+            println!("Result: {:?}", s);
+            println!("Short form: {:?}", util::short(&s));
+            match util::check_coloring(&s) {
                 Ok(check_ok) => {
                     println!("{check_ok}");
                 }
@@ -71,6 +73,9 @@ fn main() {
                     );
                 }
             }
+
+            }
+
         }
         None => {
             println!("No coloring found.");

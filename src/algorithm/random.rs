@@ -21,12 +21,18 @@ pub fn random_fill(colors: u8, n: usize) -> Vec<u8> {
 }
 
 // Just assign colors at random
-pub fn random_assignment(args: &Args) -> Option<ColorVec> {
+pub fn random_assignment(args: &Args) -> Option<Vec<ColorVec>> {
+
+    let mut result: Vec<ColorVec> = Vec::new();
     for _ in 0..args.attempts {
-        let result = random_fill(args.colors, args.target);
-        if let Ok(_) = util::check_coloring(&result) {
-            return Some(result);
+        let candidate = random_fill(args.colors, args.target);
+        if let Ok(_) = util::check_coloring(&candidate) {
+            result.push(candidate);
         }
+    }
+
+    if result.len() > 0 {
+        return Some(result);
     }
 
     return None;
@@ -36,7 +42,7 @@ pub fn random_assignment(args: &Args) -> Option<ColorVec> {
 // numbers to a "ban list"
 // After adding 3 as color C, ban color C for 3+3 as well as any
 // 3 + n<3 with color C
-pub fn random_with_bannings(args: &Args) -> Option<ColorVec> {
+pub fn random_with_bannings(args: &Args) -> Option<Vec<ColorVec>> {
     let colors = args.colors;
     let target = args.target;
 
@@ -62,7 +68,7 @@ pub fn random_with_bannings(args: &Args) -> Option<ColorVec> {
                 }
             }
             // println!("Final col: {col}");
-            vec.push(col);
+            vec.push( col  );
             // One could now delete the bans for this number, but that's just work and the memory overhead is minimal
 
             // Add bans up to the target. If target = 5 no need for bans for 4+4
@@ -79,7 +85,9 @@ pub fn random_with_bannings(args: &Args) -> Option<ColorVec> {
         }
 
         if let Ok(_) = util::check_coloring(&vec) {
-            return Some(vec);
+            let mut result = Vec::new();
+            result.push(vec);
+            return Some(result);
         }
     }
 
@@ -133,7 +141,7 @@ impl Ord for Prefix {
     }
 }
 
-pub fn random_with_backtrack(args: &Args) -> Option<ColorVec> {
+pub fn random_with_backtrack(args: &Args) -> Option<Vec<ColorVec>> {
     let (colors, target) = (args.colors, args.target);
 
     let mut heap = BinaryHeap::new();
@@ -160,7 +168,9 @@ pub fn random_with_backtrack(args: &Args) -> Option<ColorVec> {
 
         match util::check_coloring(&candidate) {
             Ok(_) => {
-                return Some(candidate);
+                let mut result = Vec::new();
+                result.push(candidate);
+                return Some(result);
             }
             Err(err) => {
                 // println!("Failed at index {}: {}", err.index, err.message);
