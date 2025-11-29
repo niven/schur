@@ -8,11 +8,6 @@ pub struct InvalidOrdering {
 
 pub fn check_coloring(colors: &Vec<u8>) -> Result<&str, InvalidOrdering> {
     let max = colors.len() as u64;
-    let _debug = format!(
-        "Checking: {colors:?}, n={}, requires {} tests",
-        max,
-        num_checks(max)
-    );
 
     // Use inclusive ranges
     for a in 2..=max as usize {

@@ -6,13 +6,14 @@ use std::fmt::Formatter;
 
 use crate::Args;
 use crate::util;
-use rand;
+use rand::distr::{Distribution, Uniform};
 
 pub fn random_fill(colors: u8, n: usize) -> Vec<u8> {
     let mut vec: Vec<u8> = Vec::with_capacity(n);
+    let mut rng = rand::rng();
+    let between = Uniform::try_from(0..colors).unwrap();
     for _ in 0..n {
-        let color: u8 = rand::random_range(0..colors);
-        vec.push(color);
+        vec.push(between.sample(&mut rng));
     }
     return vec;
 }
