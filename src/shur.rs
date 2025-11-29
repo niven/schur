@@ -25,7 +25,6 @@ pub struct Args {
     attempts: usize,
 }
 
-const COLOR_LETTERS: [char; 5] = ['a', 'b', 'c', 'd', 'e'];
 
 type ShurColoringAlgorithm = fn(args: &Args) -> Option<Vec<u8>>;
 

@@ -88,3 +88,44 @@ fn find_next_colors(colors: u8, c: &Coloring) -> Vec<u8> {
 
     return result;
 }
+
+// This could also be implemented using a BinaryHeap but that's boring.
+pub fn breadth_first(args: &Args) -> Option<Vec<u8>> {
+    
+    // The initial coloring must have 2 different colors.
+    let mut todo: Vec<&Vec<u8>> = Vec::new();
+    let first = [0, 1].to_vec();
+    todo.push( &first );
+    let mut more: Vec<&Vec<u8>>;
+
+    let mut sentinel = 0;
+    while sentinel < args.attempts && todo.len() > 0 {
+
+        more = Vec::new();
+        for current in todo {
+            println!("{current:?}");
+
+            let possible_next_colors = find_next_colors(args.colors, &Coloring{ content: current.clone()});
+            for n in possible_next_colors {
+                let mut next = current.clone();
+                next.push(n);
+                if next.len() == args.target {
+                    return Some(next);
+                }
+                println!("{:?}", next);
+                more.push( &next );
+            }
+
+
+        }
+
+        todo = more;
+        sentinel += 1;
+    }
+    if todo.len() == 0 {
+        println!("No more candidates in list");
+    }
+
+    
+    return None;
+}
