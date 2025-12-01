@@ -1,4 +1,3 @@
-use std::cmp::Ordering;
 use std::collections::{BinaryHeap, HashSet};
 
 use crate::Args;
@@ -9,7 +8,7 @@ pub fn depth_first(args: &Args) -> Option<Vec<ColorVec>> {
 
     let mut result: Vec<ColorVec> = Vec::new();
     // The initial coloring must have 2 different colors.
-    heap.push( [0, 1].to_vec() );
+    heap.push([0, 1].to_vec());
 
     let mut sentinel = 0;
     while sentinel < args.attempts && heap.len() > 0 {
@@ -24,7 +23,7 @@ pub fn depth_first(args: &Args) -> Option<Vec<ColorVec>> {
             if next.len() == args.target {
                 result.push(next);
             } else {
-                heap.push( next );
+                heap.push(next);
             }
         }
 
@@ -33,7 +32,11 @@ pub fn depth_first(args: &Args) -> Option<Vec<ColorVec>> {
     if heap.len() == 0 {
         println!("No more candidates in heap");
     }
-    return if result.len() == 0 { None } else { Some(result) };
+    return if result.len() == 0 {
+        None
+    } else {
+        Some(result)
+    };
 }
 
 // So, so many optimizations possible
@@ -65,18 +68,21 @@ fn find_next_colors(colors: u8, c: &ColorVec) -> Vec<u8> {
 
 // This could also be implemented using a BinaryHeap but that's boring.
 pub fn breadth_first(args: &Args) -> Option<Vec<ColorVec>> {
-    
     // The initial coloring must have 2 different colors.
     let mut todo: Vec<ColorVec> = Vec::new();
     let first = [0, 1];
-    todo.push( first.to_vec() );
+    todo.push(first.to_vec());
 
     let mut sentinel = 0;
     let mut solution_length = first.len();
     while sentinel < args.attempts && solution_length < args.target && todo.len() > 0 {
-        println!("------ Stack size: {} -- length: {} ------", todo.len(), todo[0].len() );
+        println!(
+            "------ Stack size: {} -- length: {} ------",
+            todo.len(),
+            todo[0].len()
+        );
 
-        let mut more: Vec<ColorVec> = Vec::with_capacity( todo.len() * args.colors as usize );
+        let mut more: Vec<ColorVec> = Vec::with_capacity(todo.len() * args.colors as usize);
         for current in todo {
             // println!("Current item: {current:?}\n");
 
@@ -86,7 +92,7 @@ pub fn breadth_first(args: &Args) -> Option<Vec<ColorVec>> {
                 let mut next = current.clone();
                 next.push(n);
                 // println!("\t{:?}", next);
-                more.push( next );
+                more.push(next);
             }
         }
         todo = more.to_vec();
@@ -99,6 +105,6 @@ pub fn breadth_first(args: &Args) -> Option<Vec<ColorVec>> {
     } else if solution_length == args.target {
         return Some(todo);
     }
-    
+
     return None;
 }

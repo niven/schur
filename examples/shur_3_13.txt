@@ -1,4 +1,7 @@
+accabbabbacca
 abbaccaccabba
+abbacccccabba
 bccbaacaabccb
 caacbbabbcaac
 cbbcaaaaacbbc
+caacbbcbbcaac

@@ -117,7 +117,7 @@ Assign colors at random, keep any prefixes (prefix: sequence of color assignment
 
 Finds `(4,40)` in about two seconds.
 Finds `(5,90)` in a minute, but at this point probably run with the `--release` profile.
-Finds `(5,100)` in a many minutes, with a limit of 1000_000_000
+Finds `(5,100)` in a many minutes, with a limit of 1_000_000_000
 
 ## Search: Depth First
 
@@ -178,4 +178,10 @@ For 44 the "hump" is at 27.
 ------ Stack size: 123076 -- length: 43 ------
 ```
 
-546 results, with 4 colors that means 4*3 extra "real" results because the search only checks starting with 2 different colors.
+546 results, with 4 colors that means 4*3 extra "real" results because the search only checks starting with 2 different colors. (Wait, I think that's wrong?)
+
+This won't of course find anything much above 50 given the amount of space that would use.
+
+## Simulated Annealing
+
+Treat the numbers as a column of particles where 1 is the lowest and coolest. Assign random colors. Then make small random changes to the entire column from 1..n with the chances of a change being higher the higher the "temperature" is, and the more correctly colored numbers below. The idea is to settle in the correct stuff while varying the incorrect and higher numbers.

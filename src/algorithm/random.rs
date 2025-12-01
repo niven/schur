@@ -9,7 +9,6 @@ use crate::util;
 use crate::util::ColorVec;
 use rand::distr::{Distribution, Uniform};
 
-
 pub fn random_fill(colors: u8, n: usize) -> Vec<u8> {
     let mut vec: Vec<u8> = Vec::with_capacity(n);
     let mut rng = rand::rng();
@@ -22,7 +21,6 @@ pub fn random_fill(colors: u8, n: usize) -> Vec<u8> {
 
 // Just assign colors at random
 pub fn random_assignment(args: &Args) -> Option<Vec<ColorVec>> {
-
     let mut result: Vec<ColorVec> = Vec::new();
     for _ in 0..args.attempts {
         let candidate = random_fill(args.colors, args.target);
@@ -68,7 +66,7 @@ pub fn random_with_bannings(args: &Args) -> Option<Vec<ColorVec>> {
                 }
             }
             // println!("Final col: {col}");
-            vec.push( col  );
+            vec.push(col);
             // One could now delete the bans for this number, but that's just work and the memory overhead is minimal
 
             // Add bans up to the target. If target = 5 no need for bans for 4+4
