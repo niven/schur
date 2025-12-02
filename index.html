@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Shur Coloring</title>
+        <script type="text/javascript">
+            let current;
+            let images;
+
+            function init() {
+                current = 0;
+                images = document.querySelectorAll("img");
+                console.log(`max ${images.length}`);
+            }
+
+            function main() {
+                init();
+
+                // Callback to animate the next image. This event is fired for each property
+                // that finished transitioning.
+                document.querySelectorAll("img").forEach( el => {
+                    el.addEventListener("transitionend", (event) => { next(event); })
+                })
+
+                images[0].classList.toggle("active");
+            }
+
+            function next(event) {
+                if( event.propertyName == "transform" && event.target.classList.contains("active") ) {
+                    console.log(event.target);
+                    console.log(event.target == images[current]);
+                    console.log(`Current = ${current} -> ${(current + 1) % images.length}`);
+                    images[current].classList.toggle("active");
+                    current = (current + 1) % images.length;
+                    images[current].classList.toggle("active");
+                }
+            }
+        </script>
+        <style type="text/css">
+            * {
+                margin: 0;
+                background-color: black;
+            }
+
+            img {
+                position:fixed;
+                left: 10vw;
+                top: 0;
+                margin: auto;
+                height: 80vh;
+                width: 80vw;
+            }
+
+            img {
+                transition: all 4s ease-in-out;
+            }
+
+            img:not( .active )
+            {
+                transform: rotate( -90deg ) scale( 0 );
+                opacity: 0;
+            }
+        </style>
+    </head>
+    <body onload="main();">
+
+        <img id="s_2_4" src="img/2_4.svg"/>
+        <img id="s_3_5" src="img/3_5.svg"/>
+        <img id="s_3_5" src="img/3_6.svg"/>
+        <img id="s_3_5" src="img/3_7.svg"/>
+        <img id="s_3_5" src="img/3_8.svg"/>
+    </body>
+</html>
