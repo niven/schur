@@ -30,7 +30,7 @@
 <!-- 3 -->
 <g id="node3" class="node">
 <title>3</title>
-<ellipse fill="none" stroke="#ffff00" stroke-width="4" cx="49.04" cy="-49.04" rx="17.32" ry="17.32"/>
+<ellipse fill="none" stroke="#38befc" stroke-width="4" cx="49.04" cy="-49.04" rx="17.32" ry="17.32"/>
 <text text-anchor="middle" x="49.04" y="-43.99" font-family="Times,serif" font-size="14.00" fill="white">3</text>
 </g>
 <!-- 2&#45;&#45;3 -->
@@ -41,7 +41,7 @@
 <!-- 4 -->
 <g id="node4" class="node">
 <title>4</title>
-<ellipse fill="none" stroke="#fc17da" stroke-width="4" cx="17.32" cy="-125.61" rx="17.32" ry="17.32"/>
+<ellipse fill="none" stroke="#38befc" stroke-width="4" cx="17.32" cy="-125.61" rx="17.32" ry="17.32"/>
 <text text-anchor="middle" x="17.32" y="-120.56" font-family="Times,serif" font-size="14.00" fill="white">4</text>
 </g>
 <!-- 3&#45;&#45;4 -->
@@ -52,7 +52,7 @@
 <!-- 5 -->
 <g id="node5" class="node">
 <title>5</title>
-<ellipse fill="none" stroke="#ffff00" stroke-width="4" cx="49.04" cy="-202.18" rx="17.32" ry="17.32"/>
+<ellipse fill="none" stroke="#38befc" stroke-width="4" cx="49.04" cy="-202.18" rx="17.32" ry="17.32"/>
 <text text-anchor="middle" x="49.04" y="-197.13" font-family="Times,serif" font-size="14.00" fill="white">5</text>
 </g>
 <!-- 4&#45;&#45;5 -->
@@ -63,7 +63,7 @@
 <!-- 6 -->
 <g id="node6" class="node">
 <title>6</title>
-<ellipse fill="none" stroke="#38befc" stroke-width="4" cx="125.61" cy="-233.9" rx="17.32" ry="17.32"/>
+<ellipse fill="none" stroke="#ffff00" stroke-width="4" cx="125.61" cy="-233.9" rx="17.32" ry="17.32"/>
 <text text-anchor="middle" x="125.61" y="-228.85" font-family="Times,serif" font-size="14.00" fill="white">6</text>
 </g>
 <!-- 5&#45;&#45;6 -->
@@ -74,7 +74,7 @@
 <!-- 7 -->
 <g id="node7" class="node">
 <title>7</title>
-<ellipse fill="none" stroke="#38befc" stroke-width="4" cx="202.18" cy="-202.18" rx="17.32" ry="17.32"/>
+<ellipse fill="none" stroke="#ffff00" stroke-width="4" cx="202.18" cy="-202.18" rx="17.32" ry="17.32"/>
 <text text-anchor="middle" x="202.18" y="-197.13" font-family="Times,serif" font-size="14.00" fill="white">7</text>
 </g>
 <!-- 6&#45;&#45;7 -->

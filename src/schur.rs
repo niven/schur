@@ -28,7 +28,7 @@ pub struct Args {
     attempts: usize,
 }
 
-type ShurColoringAlgorithm = fn(args: &Args) -> Option<Vec<ColorVec>>;
+type SchurColoringAlgorithm = fn(args: &Args) -> Option<Vec<ColorVec>>;
 
 fn main() {
     let args = Args::parse();
@@ -40,7 +40,7 @@ fn main() {
     let mut algorithms = HashMap::new();
     algorithms.insert(
         "random",
-        algorithm::random::random_assignment as ShurColoringAlgorithm,
+        algorithm::random::random_assignment as SchurColoringAlgorithm,
     );
     algorithms.insert("random_ban", algorithm::random::random_with_bannings);
     algorithms.insert("random_dfs", algorithm::random::random_with_backtrack);

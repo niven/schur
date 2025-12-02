@@ -1,6 +1,6 @@
 [[bin]]
-name = "shur"
-path = "src/shur.rs"
+name = "schur"
+path = "src/schur.rs"
 
 [[bin]]
 name = "check"
@@ -11,7 +11,7 @@ name = "create_dot"
 path = "src/create_dot.rs"
 
 [package]
-name = "shur"
+name = "schur"
 version = "0.1.0"
 edition = "2024"
 

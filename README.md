@@ -1,9 +1,10 @@
 # Schur Numbers
 
-![Shur Coloring for 4,44](img/4_44.svg)
+![Schur Coloring for 4,44](img/4_44.svg)
 
-## Numberphile episode
-https://www.youtube.com/watch?v=57V8Ud7PL8k
+[View a relaxing animation](https://niven.github.io/schur/)
+
+Inspired by [Numberphile: Schur Numbers (the world's biggest proof)](https://www.youtube.com/watch?v=57V8Ud7PL8k)
 
 # Definition
 
@@ -65,7 +66,7 @@ Filenames are of the format `schur_k_n.txt`, where `k` is the number of colors u
 
 Run these with:
 ```
-cargo run --bin shur -- --colors=3 --target=13 --algorithm=random_ban --attempts=100000
+cargo run --bin schur -- --colors=3 --target=13 --algorithm=random_ban --attempts=100000
 ```
 Parameters:
 - `--colors=`: number of colors to use
@@ -78,7 +79,7 @@ Available algorithms: see ***Methods***
 ## Check solutions
 
 ```
-cargo run --bin check -- --input=examples/shur_4_45.txt
+cargo run --bin check -- --input=examples/schur_4_45.txt
 ```
 
 # Visualization
@@ -87,7 +88,7 @@ Prerequisite: [graphviz](https://graphviz.org/download/) installed.
 
 Use `create_dot` to create a dot file from a coloring, then use `dot` to create an image.
 ```bash
-cargo run --bin create_dot -- --source=examples/shur_3_13.txt --destination=test.dot; and dot -Tsvg -otest.svg test.dot ; and open test.svg
+cargo run --bin create_dot -- --source=examples/schur_3_13.txt --destination=test.dot; and dot -Tsvg -otest.svg test.dot ; and open test.svg
 ```
 
 # Methods
