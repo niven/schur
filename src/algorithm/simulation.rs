@@ -39,6 +39,7 @@ pub fn annealing(args: &Args) -> Option<Vec<ColorVec>> {
                 // L is the max. (we use 1)
                 // k is the steepness which we guess at? Should be fairly steep to avoid reassigning correct numbers.
                 // x_0 is the midpoint which is e.index
+                candidate[e.index] = rand::random_range(0..args.colors); // Always change the one that failed
                 for i in 2..candidate.len() {
                     let odds: f64 = logistic(i, e.index);
                     // print!("f({}, {}) = {:.4}", i, e.index, odds);

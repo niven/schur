@@ -1,4 +1,4 @@
-pub const COLOR_LETTERS: [char; 5] = ['a', 'b', 'c', 'd', 'e'];
+pub const COLOR_LETTERS: [char; 6] = ['a', 'b', 'c', 'd', 'e', 'f'];
 
 pub type ColorVec = Vec<u8>;
 

@@ -179,7 +179,7 @@ For 44 the "hump" is at 27.
 ------ Stack size: 123076 -- length: 43 ------
 ```
 
-546 results, with 4 colors that means 4*3 extra "real" results because the search only checks starting with 2 different colors. (Wait, I think that's wrong?)
+546 results, with 4 colors that means 4*3 extra "real" results because the search only checks starting with 2 different colors.
 
 This won't of course find anything much above 50 given the amount of space that would use.
 

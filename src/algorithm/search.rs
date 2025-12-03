@@ -1,4 +1,4 @@
-use std::collections::{BinaryHeap, HashSet};
+use std::collections::BinaryHeap;
 
 use crate::Args;
 use crate::util::ColorVec;
