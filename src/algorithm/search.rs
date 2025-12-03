@@ -16,7 +16,7 @@ pub fn depth_first(args: &Args) -> Option<Vec<ColorVec>> {
         // This looks nice if you uncomment it
         // println!("Current: {:?}", current.content);
 
-        let possible_next_colors = find_next_colors(args.colors, &current);
+        let possible_next_colors = find_next_colors(args.colors as usize, &current);
         for n in possible_next_colors {
             let mut next = current.clone();
             next.push(n);
@@ -40,29 +40,37 @@ pub fn depth_first(args: &Args) -> Option<Vec<ColorVec>> {
 }
 
 // So, so many optimizations possible
-fn find_next_colors(colors: u8, c: &ColorVec) -> Vec<u8> {
+fn find_next_colors(colors: usize, c: &ColorVec) -> Vec<u8> {
     let mut result: ColorVec = Vec::new();
-    let mut banned: HashSet<u8> = HashSet::new();
+
+    let mut available: Vec<u8> = (0..colors as u8).collect();
+    let mut max = available.len();
 
     let target = c.len();
     // find all sums a+b=c where c is the target. Since a+b=b+a we only need to run a to half target
     for a in 0..=target / 2 {
         let b = target - a - 1;
+        // println!("c[{a}]+c[{b}]: {} + {} (available: {:?})", c[a], c[b], &available[0..max]);
         if c[a] == c[b] {
-            banned.insert(c[a]);
-            if banned.len() == colors as usize {
-                // If everything is banned there are no possible next colors
-                return result;
+            // println!("Must ban {}", c[a]);
+            // if a color is not available, fill its spot with the highest available color
+            // and then reduce the length of the available array. This means you keep a compacted
+            // list of available colors.
+            for i in 0..max {
+                if available[i] == c[a] {
+                    available[i] = available[max-1];
+                    max -= 1;
+                    if max == 0 as usize {
+                        // If nothing is available there are no possible next colors
+                        return result;
+                    }
+                }
             }
+            // println!("Available: {:?})", &available[0..max]);
         }
     }
 
-    for c in 0..colors {
-        if !banned.contains(&c) {
-            result.push(c);
-        }
-    }
-
+    result = available[0..max].to_vec();
     return result;
 }
 
@@ -86,7 +94,7 @@ pub fn breadth_first(args: &Args) -> Option<Vec<ColorVec>> {
         for current in todo {
             // println!("Current item: {current:?}\n");
 
-            let possible_next_colors = find_next_colors(args.colors, &current);
+            let possible_next_colors = find_next_colors(args.colors as usize, &current);
             // println!("{} Children:", possible_next_colors.len());
             for n in possible_next_colors {
                 let mut next = current.clone();
