@@ -10,6 +10,8 @@
                 current = 0;
                 images = document.querySelectorAll("img");
                 console.log(`max ${images.length}`);
+
+                document.body.onclick = function(e){ document.documentElement.requestFullscreen() };
             }
 
             function main() {

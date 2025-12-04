@@ -24,7 +24,7 @@ pub fn annealing(args: &Args) -> Option<Vec<ColorVec>> {
         match lib::check_coloring(&candidate) {
             Ok(_) => {
                 // println!("Solution is valid!");
-                result.push( candidate.clone() );
+                result.push(candidate.clone());
                 // Maybe find another
                 candidate = random::random_fill(args.colors, args.target);
             }

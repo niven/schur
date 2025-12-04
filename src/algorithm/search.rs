@@ -4,7 +4,6 @@ use lib::*;
 
 use crate::Args;
 
-
 pub fn depth_first(args: &Args) -> Option<Vec<ColorVec>> {
     let mut heap: BinaryHeap<ColorVec> = BinaryHeap::new();
 
@@ -60,7 +59,7 @@ fn find_next_colors(colors: usize, c: &ColorVec) -> Vec<u8> {
             // list of available colors.
             for i in 0..max {
                 if available[i] == c[a] {
-                    available[i] = available[max-1];
+                    available[i] = available[max - 1];
                     max -= 1;
                     if max == 0 as usize {
                         // If nothing is available there are no possible next colors
