@@ -10,6 +10,10 @@ path = "src/check.rs"
 name = "create_dot"
 path = "src/create_dot.rs"
 
+[lib]
+name = "lib"
+path = "src/lib.rs"
+
 [package]
 name = "schur"
 version = "0.1.0"

@@ -52,7 +52,7 @@ So for checking N numbers you need:
     if N is even: checks(n-1) + n/2
 Where T(n) is the triangular number for n
  */
-fn num_checks(n: u64) -> u64 {
+pub fn num_checks(n: u64) -> u64 {
     if n % 2 == 0 {
         return num_checks(n - 1) + n / 2;
     }
@@ -61,7 +61,7 @@ fn num_checks(n: u64) -> u64 {
     return 2 * t_n;
 }
 
-fn triangle(n: u64) -> u64 {
+pub fn triangle(n: u64) -> u64 {
     return n * (n + 1) / 2;
 }
 

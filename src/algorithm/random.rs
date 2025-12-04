@@ -4,10 +4,11 @@ use std::fmt::Debug;
 use std::fmt::Error;
 use std::fmt::Formatter;
 
-use crate::Args;
-use crate::util;
-use crate::util::ColorVec;
 use rand::distr::{Distribution, Uniform};
+
+use lib::*;
+
+use crate::Args;
 
 pub fn random_fill(colors: u8, n: usize) -> Vec<u8> {
     let mut vec: Vec<u8> = Vec::with_capacity(n);
@@ -24,7 +25,7 @@ pub fn random_assignment(args: &Args) -> Option<Vec<ColorVec>> {
     let mut result: Vec<ColorVec> = Vec::new();
     for _ in 0..args.attempts {
         let candidate = random_fill(args.colors, args.target);
-        if let Ok(_) = util::check_coloring(&candidate) {
+        if let Ok(_) = lib::check_coloring(&candidate) {
             result.push(candidate);
         }
     }
@@ -82,7 +83,7 @@ pub fn random_with_bannings(args: &Args) -> Option<Vec<ColorVec>> {
             }
         }
 
-        if let Ok(_) = util::check_coloring(&vec) {
+        if let Ok(_) = lib::check_coloring(&vec) {
             let mut result = Vec::new();
             result.push(vec);
             return Some(result);
@@ -164,7 +165,7 @@ pub fn random_with_backtrack(args: &Args) -> Option<Vec<ColorVec>> {
         candidate.extend(remainder);
         // println!("Candidate: {:?}", candidate);
 
-        match util::check_coloring(&candidate) {
+        match lib::check_coloring(&candidate) {
             Ok(_) => {
                 let mut result = Vec::new();
                 result.push(candidate);

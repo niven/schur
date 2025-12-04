@@ -3,8 +3,6 @@ use std::fs;
 use clap::Parser;
 use std::collections::HashMap;
 
-mod util;
-
 #[derive(Parser, Debug)]
 struct Args {
     /// Input file
@@ -21,7 +19,7 @@ fn main() {
     for coloring in lines {
         let v = vec_from_coloring(coloring);
         println!("{v:?}");
-        match util::check_coloring(&v) {
+        match lib::check_coloring(&v) {
             Ok(msg) => println!("{coloring} - {msg}"),
             Err(err) => println!("{coloring} - {err:?}"),
         }

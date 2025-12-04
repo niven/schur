@@ -2,10 +2,10 @@ use std::f64::consts;
 
 use rand::Rng;
 
+use lib::*;
+
 use crate::Args;
 use crate::algorithm::random;
-use crate::util;
-use crate::util::ColorVec;
 
 // Freeze the column from the bottom and keeping the correct ones.
 pub fn annealing(args: &Args) -> Option<Vec<ColorVec>> {
@@ -21,7 +21,7 @@ pub fn annealing(args: &Args) -> Option<Vec<ColorVec>> {
     let mut sentinel = 0;
     while sentinel <= args.attempts {
         // println!("---------- {candidate:?} -------------");
-        match util::check_coloring(&candidate) {
+        match lib::check_coloring(&candidate) {
             Ok(_) => {
                 // println!("Solution is valid!");
                 result.push( candidate.clone() );

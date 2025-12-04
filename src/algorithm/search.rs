@@ -1,7 +1,9 @@
 use std::collections::BinaryHeap;
 
+use lib::*;
+
 use crate::Args;
-use crate::util::ColorVec;
+
 
 pub fn depth_first(args: &Args) -> Option<Vec<ColorVec>> {
     let mut heap: BinaryHeap<ColorVec> = BinaryHeap::new();

@@ -3,11 +3,10 @@ use std::process;
 
 use clap::Parser;
 
-use crate::util::COLOR_LETTERS;
-
 mod algorithm;
-mod util;
-use crate::util::ColorVec;
+
+use lib::COLOR_LETTERS;
+use lib::ColorVec;
 
 #[derive(Parser, Debug)]
 pub struct Args {
@@ -65,8 +64,8 @@ fn main() {
         Some(solutions) => {
             for s in solutions {
                 println!("Result: {:?}", s);
-                println!("Short form: {:?}", util::short(&s));
-                match util::check_coloring(&s) {
+                println!("Short form: {:?}", lib::short(&s));
+                match lib::check_coloring(&s) {
                     Ok(check_ok) => {
                         println!("{check_ok}");
                     }
