@@ -64,7 +64,11 @@ fn main() {
         Some(solutions) => {
             for s in solutions {
                 println!("Result: {:?}", s);
-                println!("Short form: {:?}", lib::short(&s));
+                println!(
+                    "Short form: {:?}. Palindrome: {}",
+                    lib::short(&s),
+                    lib::is_palindrome(&s)
+                );
                 match lib::check_coloring(&s) {
                     Ok(check_ok) => {
                         println!("{check_ok}");

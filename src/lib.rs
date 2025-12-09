@@ -75,3 +75,13 @@ pub fn short(solution: &ColorVec) -> String {
         .into_iter()
         .fold(String::from(""), |a, b| format!("{a}{b}"));
 }
+
+pub fn is_palindrome(solution: &ColorVec) -> bool {
+    let len = solution.len();
+    for i in 0..len / 2 {
+        if solution[i] != solution[len - 1 - i] {
+            return false;
+        }
+    }
+    return true;
+}
